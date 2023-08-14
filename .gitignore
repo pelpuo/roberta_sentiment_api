@@ -1,3 +1,4 @@
 env
 images_uploaded
 __pycache__
+.idea/

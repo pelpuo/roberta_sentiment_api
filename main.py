@@ -1,12 +1,23 @@
 import fastapi
 import uvicorn
 from fastapi import responses
+from fastapi.middleware.cors import CORSMiddleware
 
 from routers import classify
 from core.config import roberta
 import os
 
 app = fastapi.FastAPI()
+
+origins = ["http://localhost:3000"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.on_event("startup")
 def startup_event():
