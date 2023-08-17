@@ -7,9 +7,14 @@ from routers import classify
 from core.config import roberta
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
+ORIGIN = os.getenv("ORIGIN")
+
 app = fastapi.FastAPI()
 
-origins = ["http://localhost:3000"]
+origins = [ORIGIN]
 
 app.add_middleware(
     CORSMiddleware,
